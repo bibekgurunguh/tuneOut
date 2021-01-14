@@ -52,3 +52,10 @@ function identifyAudio(data, options, cb) {
     formData: formData
   }, cb);
 }
+
+const bitmap = fs.readFileSync('../../../test-audio/toxic-sample-15s.mp3');
+
+identifyAudio(Buffer.from(bitmap), defaultOptions, function (err, httpResponse, body) {
+  if (err) console.log(err);
+  console.log(body);
+});
