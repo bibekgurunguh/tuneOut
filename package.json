@@ -2,7 +2,7 @@
   "name": "tuneout",
   "version": "1.0.0",
   "description": "tuneOut song identifcation Chrome extension",
-  "main": "index-popup.js",
+  "main": "index-js/index-popup.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server",

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index-css/index-foreground.css';
-import Foreground from './components/Foreground';
+import Foreground from '../components/foreground/Foreground';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import './Options.css';
 
 export default function Options() {
   return (
     <div>
-
+      <h1>test-options</h1>
     </div>
   )
 }
