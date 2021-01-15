@@ -3,7 +3,7 @@
 
 import React from 'react';
 import './Popup.css';
-import captureAudio from '../../audio-extraction/stream-extraction';
+import captureTab from '../../audio-extraction/stream-extraction';
 import GetIdButton from './GetIdButton.js';
 
 export default function Popup() {
@@ -11,7 +11,7 @@ export default function Popup() {
 
 
   const getId = (tabId) => {
-    captureAudio(tabId);
+    captureTab(tabId);
   }
 
   return (

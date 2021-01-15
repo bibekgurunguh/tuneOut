@@ -7,7 +7,7 @@ const defaultOptions = {
   host: 'identify-eu-west-1.acrcloud.com',
   endpoint: '/v1/identify',
   signature_version: '1',
-  data_type:'audio',
+  data_type:'fingerprint',
   secure: true,
   access_key: 'a735916ac5e523565ecf5a2d872ac541',
   access_secret: 'QO3uR9K1GC626FjTLADGvQ7wWYWlzciJEs8VukbU' //! Store in .env file??
@@ -54,8 +54,12 @@ function identifyAudio(data, options, cb) {
 }
 
 const bitmap = fs.readFileSync('../../../test-audio/toxic-sample-15s.mp3');
+const bitmap2 = fs.readFileSync('./bitmap2.txt', 'utf8')
 
-identifyAudio(Buffer.from(bitmap), defaultOptions, function (err, httpResponse, body) {
+
+
+
+identifyAudio(Buffer.from(bitmap2), defaultOptions, function (err, httpResponse, body) {
   if (err) console.log(err);
   console.log(body);
 });
