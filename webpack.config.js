@@ -39,6 +39,20 @@ module.exports = {
             {
                 test: /\.html$/,
                 use: ['html-loader']
+            },
+            {
+                test: /\.css$/,
+                use: [
+                  {
+                      loader: 'style-loader'
+                  },
+                  {
+                      loader: 'css-loader',
+                      options: {
+                        modules: true
+                      }
+                   }
+                ]
             }
         ]
     },
@@ -54,11 +68,11 @@ module.exports = {
             chunks: ['options']
         }),
         // !comment out when shipping to production
-        new HtmlWebpackPlugin({
-            filename: 'idx-foreground.html',
-            template: 'client/src/index-html/idx-foreground.html',
-            chunks: ['foreground']
-        }),
+        // new HtmlWebpackPlugin({
+        //     filename: 'idx-foreground.html',
+        //     template: 'client/src/index-html/idx-foreground.html',
+        //     chunks: ['foreground']
+        // }),
         new CopyWebpackPlugin({
             patterns: [
                 { from: 'client/src/manifest.json', to: '[name].[ext]' },
