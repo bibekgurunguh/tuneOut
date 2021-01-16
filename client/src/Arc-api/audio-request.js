@@ -10,7 +10,7 @@ const defaultOptions = {
   data_type:'fingerprint',
   secure: true,
   access_key: 'a735916ac5e523565ecf5a2d872ac541',
-  access_secret: 'QO3uR9K1GC626FjTLADGvQ7wWYWlzciJEs8VukbU' //! Store in .env file??
+  access_secret: '' //! Store in .env file??
 };
 
 function buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
