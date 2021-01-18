@@ -1,9 +1,28 @@
-.box {
-  width: 500px;
-  height: 300px;
-  border: 10px solid black;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 315px;
+  height: 450px;
+  background-image: linear-gradient(rgb(255, 202, 239), rgb(233, 233, 233));
 }
 
-h1 {
-  color: red;
+.box {
+  color: green;}
+
+.tuneoutlogo {
+  padding: 15px;
+  align-self: center
+
+}
+
+
+.test {
+  color: green
+}
+
+.idBtn {
+
 }

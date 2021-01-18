@@ -1,64 +1,75 @@
 /*global chrome*/
-require ('underscore')
-
-
-const bufferToBase46 = (buffer) => {
-  const bytes = new Uint8Array(buffer);
-}
 
 // TODO add tab capture function
+// TODO audio recorder function
 
+let bitmapBuffer;
 
+let recorder;
+
+// let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 function handleCapture(stream) {
-  const options = { type: 'audio/webm' };
-  const recorder = new MediaRecorder(stream, options);
+  const options = { mimeType: 'audio/webm; codecs=opus' };
+  recorder = new MediaRecorder(stream, options);
   recorder.start();
   console.log('recorder started');
   setTimeout(() => {
     let chunks =[];
     recorder.ondataavailable = function(e) {
       chunks.push(e.data)
+      let blob = new Blob([e.data], { type: 'audio/webm' });
       let reader = new FileReader();
+
+      console.log('blob', blob)
+
       reader.onloadend = () => {
         console.log('reader.result', reader.result)
+        bitmapBuffer = new Uint8Array(reader.result)
+        console.log('bitmapbuffer', bitmapBuffer);
+        console.log('bitmapbuffer[0]', bitmapBuffer[0])
       }
-      reader.readAsDataURL(e.data);
+
+
+      bitmapBuffer = reader.readAsArrayBuffer(blob);
+      console.log('bitmapbuffer', bitmapBuffer)
+
+      // fs.writeFile("./testaudio.txt", "Hey there!", function(err) {
+      //     if(err) {
+      //         return console.log(err);
+      //     }
+      //     console.log("The file was saved!");
+      // });
+      // blob.arrayBuffer().then(buffer => encodeWAV(buffer))
     }
     recorder.stop()
     console.log('recorder stopped')
-    console.log('chunks', chunks)
+    console.log('buffer')
     let audio = new Audio();
     audio.scrObject = stream
     audio.play()
-
 
     console.log('audio', audio)
     //~ recorder.onstop to handle data
     console.log('recorder', recorder);
     console.log('recorder-data', recorder.data)
+
+    // identifyAudio(bitmapBuffer, defaultOptions, function (err, httpResponse, body) {
+    //   if (err) console.log(err);
+    //   console.log(body);
+    // });
   }, 6000);
 
-
+  return bitmapBuffer
 }
 
-function captureTab (tabId) {
+export default function captureTab (tabId) {
   console.log('captureTab invoked')
   chrome.tabCapture.capture({ audio: true }, function(stream) {
     handleCapture(stream);
   })
 }
 
-
-
-
-
-
-
-
-
-
-  //TODO audio recorder function
 
 
 
@@ -76,24 +87,3 @@ function captureTab (tabId) {
   }
 
   // TODO add function which returns tabIDs for  audio playing
-
-
-// let chunks = []
-// console.log('tabaudiostream', tabAudioStream)
-
-// const recordStream = new MediaRecorder(tabAudioStream)
-
-// record(recordStream)
-
-// recordStream.onstop = function(e) {
-//   let blob = new Blob(chunks, {type: 'audio/ogg; codecs=opus'});
-//   console.log('recorder stopped')
-// }
-
-// recordStream.ondataavailable = function(e) {
-//   chunks.push(e.data)
-// }
-// console.log('blob')
-// console.log('chunks', chunks)
-
-module.exports = captureTab;
