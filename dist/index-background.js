@@ -1,0 +1,78 @@
+import 'regenerator-runtime/runtime.js';
+import { defaultOptions, identify_v2 } from '../Arc-api/audio-request.js'
+
+let recorder;
+let streamObject;
+
+
+function handleCapture(stream, muteTab) {
+  return new Promise(resolve => {
+    const options = { mimeType: 'audio/webm; codecs=opus' };
+    recorder = new MediaRecorder(stream, options);
+    streamObject = stream;
+    recorder.start();
+    setTimeout(() => {
+      recorder.stop();
+      streamObject.getAudioTracks()[0].stop();
+    }, 6000);
+    recorder.ondataavailable = function(e) {
+      let blob = new Blob([e.data], { type: 'audio/mp3' });
+      const data = uploadStream(blob);
+      resolve(data);
+    }
+  })
+}
+
+function uploadStream(stream) {
+  return new Promise(resolve => {
+    toBuffer(stream);
+    identify_v2(stream, defaultOptions, function (body, httpResponse, err) {
+        if (err) console.log();
+        console.log('test body', body);
+        resolve(body);
+    })
+  })
+}
+
+function toBuffer (stream) {
+  let buffer = Buffer.alloc(stream.size);
+  let view = new Uint8Array(stream);
+  for (let i = 0; i < buffer.length; ++i) {
+    buffer[i] = view[i];
+  }
+  return buffer;
+}
+
+export default function captureTab (tabId) {
+  return new Promise(resolve => {
+    chrome.tabCapture.capture({ audio: true }, function(stream) {
+      let audio = new Audio();
+      audio.srcObject = stream;
+      audio.play();
+      const data = handleCapture(stream);
+      console.log('data', data);
+      resolve(data);
+    })
+  })
+}
+
+
+
+
+  //TODO add function which checks for tabs being actively captured
+  let currentTabId;
+
+  function checkActiveTab(capturedTabs) {
+    if (capturedTabs.some(tab => tab.tabId === currentTabId && tab.status === 'active')) {
+      console.log('tab being captured')
+    }
+
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+      currentTabId = tabs[0].id
+    })
+  }
+
+  // TODO add function which returns tabIDs for  audio playing
+
+
+

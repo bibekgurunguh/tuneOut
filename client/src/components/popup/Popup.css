@@ -4,8 +4,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 315px;
-  height: 450px;
+  width: 275px;
+  height: 400px;
   background-image: linear-gradient(rgb(255, 202, 239), rgb(233, 233, 233));
 }
 
@@ -15,7 +15,6 @@
 .tuneoutlogo {
   padding: 15px;
   align-self: center
-
 }
 
 

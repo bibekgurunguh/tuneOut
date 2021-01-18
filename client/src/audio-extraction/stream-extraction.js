@@ -3,7 +3,9 @@
 // TODO add tab capture function
 // TODO audio recorder function
 
-let bitmapBuffer;
+import { defaultOptions, identify_v2 } from '../Arc-api/audio-request.js'
+
+window.srcObject
 
 let recorder;
 
@@ -17,55 +19,45 @@ function handleCapture(stream) {
   setTimeout(() => {
     let chunks =[];
     recorder.ondataavailable = function(e) {
-      chunks.push(e.data)
-      let blob = new Blob([e.data], { type: 'audio/webm' });
-      let reader = new FileReader();
-
-      console.log('blob', blob)
-
-      reader.onloadend = () => {
-        console.log('reader.result', reader.result)
-        bitmapBuffer = new Uint8Array(reader.result)
-        console.log('bitmapbuffer', bitmapBuffer);
-        console.log('bitmapbuffer[0]', bitmapBuffer[0])
-      }
-
-
-      bitmapBuffer = reader.readAsArrayBuffer(blob);
-      console.log('bitmapbuffer', bitmapBuffer)
-
-      // fs.writeFile("./testaudio.txt", "Hey there!", function(err) {
-      //     if(err) {
-      //         return console.log(err);
-      //     }
-      //     console.log("The file was saved!");
-      // });
-      // blob.arrayBuffer().then(buffer => encodeWAV(buffer))
+      let blob = new Blob([e.data], { type: 'audio/mp3' });
+      uploadStream(blob)
     }
+    // let audio = new Audio();
+    // audio.scrObject = blob
+    // audio.play()
+    // audio.stop()
     recorder.stop()
     console.log('recorder stopped')
-    console.log('buffer')
-    let audio = new Audio();
-    audio.scrObject = stream
-    audio.play()
 
-    console.log('audio', audio)
-    //~ recorder.onstop to handle data
-    console.log('recorder', recorder);
-    console.log('recorder-data', recorder.data)
+    console.log('tabcapture stopped')
 
-    // identifyAudio(bitmapBuffer, defaultOptions, function (err, httpResponse, body) {
-    //   if (err) console.log(err);
-    //   console.log(body);
-    // });
+    return
   }, 6000);
+}
 
-  return bitmapBuffer
+function uploadStream(stream) {
+  console.log('typeofstream', stream)
+  toBuffer(stream)
+  console.log('stream', stream)
+  identify_v2(stream, defaultOptions, function (err, httpResponse, body) {
+      if (err) console.log(err);
+      console.log(body);
+  })
+}
+
+function toBuffer (stream) {
+  let buffer = Buffer.alloc(stream.size);
+  let view = new Uint8Array(stream)
+  for (let i = 0; i < buffer.length; ++i) {
+    buffer[i] = view[i];
+  }
+  return buffer
 }
 
 export default function captureTab (tabId) {
   console.log('captureTab invoked')
   chrome.tabCapture.capture({ audio: true }, function(stream) {
+    //!if active tab is not muted -- play stream as srcObject
     handleCapture(stream);
   })
 }

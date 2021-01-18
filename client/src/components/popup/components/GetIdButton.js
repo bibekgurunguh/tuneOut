@@ -7,11 +7,10 @@ import Styles from './GetIdButton.css'
 
 export default function GetIdButton({ getId }) {
 
- async function handleClick(event) {
+function handleClick(event) {
     console.log('button clicked :)')
-  const ArrayBuffer = await getId()
-
-  }
+  getId()
+}
 
   return (
     <div>

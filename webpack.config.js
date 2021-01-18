@@ -43,18 +43,32 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
+                  'style-loader',
                   {
-                      loader: 'style-loader'
-                  },
-                  {
-                      loader: 'css-loader',
-                      options: {
-                        modules: true
-                      }
+                    loader: 'css-loader',
+                    options: {
+                      importLoaders: 1,
+                      modules: true
                    }
+                 }
                 ]
-            }
-        ]
+            },
+            {
+                test: /\.svg$/,
+                use: ['@svgr/webpack'],
+            },
+            {
+                test: /\.(png|jp(e*)g|svg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'images/[hash]-[name].[ext]',
+                        },
+                    },
+                ],
+            },
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -83,3 +97,4 @@ module.exports = {
         new CleanWebpackPlugin()
     ]
 }
+
