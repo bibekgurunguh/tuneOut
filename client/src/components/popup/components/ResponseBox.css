@@ -1,8 +1,43 @@
 .resBox {
-  margin-bottom: 40px;
+  font-family: 'Courier New';
+  padding: 15px;
+  z-index: 11;
 
 }
 
 .emptyResBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 22px;
+  transition: 3s;
+  color: #666666;
+  font-family: 'Courier New';
+  font-size: 16px;
+}
 
+.animation {
+
+  display: inline-block;
+
+  z-index: 11;
+}
+
+.errorMessage {
+    transition: 3s;
+    font-family: 'Courier New';
+    font-size: 15px;
+    color: #666666;
+}
+
+.errorBox {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.linkbox {
+  display: flex;
+  justify-content: space-evenly;
 }

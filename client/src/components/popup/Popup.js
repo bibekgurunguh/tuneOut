@@ -7,12 +7,22 @@ import GetIdButton from './components/GetIdButton.js';
 import Tuneoutlogo from '../../../../icons/Tuneoutlogo.svg';
 import SelectTab from './components/SelectTab.js'
 import ResponseBox from './components/ResponseBox.js'
+import Lottie from 'react-lottie';
+import animationData from './animations/loading-animation.json'
 
 export default function Popup() {
 
   const [songInfo, setSongInfo] = useState([]);
   const [tabList, setTabs] = useState([]);
   const [errorMessage, setErrorMessage] = useState([]);
+  const [animation, setAnimation] = useState(false)
+
+  const runLoadingAnimation = () => {
+    setAnimation(true)
+    setTimeout(() => {
+      setAnimation(false)
+    }, 9000)
+  }
 
   const listAllTabs = async () => {
     const response =  await chrome.tabs.query({audible: true}, function(tabs) {
@@ -23,6 +33,7 @@ export default function Popup() {
   };
 
   const getId = async (tabId) => {
+
     const response = await captureTab(tabId)
     console.log('response', response);
 
@@ -31,9 +42,10 @@ export default function Popup() {
       setSongInfo([]);
       return;
     } else {
-    JSON.parse(response)
-    setSongInfo(response)
-    console.log(songInfo);
+      JSON.parse(response)
+      setAnimation(false)
+      setSongInfo(response)
+      console.log(songInfo);
     };
   };
 
@@ -41,17 +53,17 @@ export default function Popup() {
     return (
       <div className={Styles.container}>
             <img className={Styles.tuneoutlogo} src={Tuneoutlogo} alt='tuneOut logo' />
-            <SelectTab tabList={tabList}></SelectTab>
-            <ResponseBox songInfo={songInfo}></ResponseBox>
+            <SelectTab></SelectTab>
+            <ResponseBox runLoadingAnimation={runLoadingAnimation} animation={animation} songInfo={songInfo}></ResponseBox>
             <GetIdButton className={Styles.idBtn} getId={getId}></GetIdButton>
       </div>
     )
   } return (
     <div className={Styles.container}>
       <img className={Styles.tuneoutlogo} src={Tuneoutlogo} alt='tuneOut logo' />
-      <ResponseBox errorMessage={errorMessage}></ResponseBox>
+      <ResponseBox runLoadingAnimation={runLoadingAnimation} animation={animation} errorMessage={errorMessage}></ResponseBox>
       <SelectTab></SelectTab>
-      <GetIdButton className={Styles.idBtn} getId={getId}></GetIdButton>
+      <GetIdButton runLoadingAnimation={runLoadingAnimation} className={Styles.idBtn} listAllTabs={listAllTabs} getId={getId}></GetIdButton>
     </div>
   )
 }

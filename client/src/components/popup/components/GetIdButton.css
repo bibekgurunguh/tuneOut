@@ -1,0 +1,27 @@
+
+.button {
+  margin-bottom: 20px;
+  position: sticky;
+
+  z-index: 10;
+  padding :0.5em 3em;
+  border :0.16em solid rgb(233, 233, 233);
+  margin: 0.2 0.3em 0.3em 0;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: 'Lucida Console';
+  font-weight:500;
+  color:#666666;
+  text-align:center;
+  transition: all 0.15s;
+  }
+
+  .button:hover{
+  color:#666666;
+  border-color:#838383;
+  }
+
+  .button:active{
+  color:#BBBBBB;
+  border-color:#BBBBBB;
+  }

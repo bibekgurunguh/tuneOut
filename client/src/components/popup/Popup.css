@@ -9,11 +9,10 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 275px;
-  height: 400px;
+  height: 425px;
 }
 
-.box {
-  color: green;}
+
 
 .tuneoutlogo {
   padding: 15px;
@@ -21,9 +20,6 @@ body {
 }
 
 
-.test {
-  color: green
-}
 
 .idBtn {
 

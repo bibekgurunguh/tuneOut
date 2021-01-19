@@ -1,16 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ResponseItem from './ResponseItem.js'
 import Styles from './ResponseBox.css'
+import Lottie from 'react-lottie';
+import animationData from '../animations/loading-animation.json'
+import YtSearch from './external-links/YtSearch.js'
+import SpotifySearch from './external-links/SpotifySearch.js'
 
-export default function ResponseBox({ songInfo }) {
+export default function ResponseBox({ songInfo, setSongInfo, animation }) {
+
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
+  if (animation === true) {
+    return (
+      <div className={Styles.animation}>
+        <Lottie
+          options={defaultOptions}
+          height={260}
+          width={275}
+          />
+    </div>
+    )
+  }
 
   if (songInfo) {
-    const songObj = JSON.parse(songInfo)
 
+    const songObj = JSON.parse(songInfo)
     if (songObj.status.code === 1001) {
+      //? on song identification failure
+      songInfo = [];
       return (
-        <div>
-          <h1>Couldn't identify track</h1>
+        <div className={Styles.errorBox}>
+          <h3 className={Styles.errorMessage}>couldn't identify track</h3>
+          <h3 className={Styles.errorMessage}>please try again</h3>
+        </div>
+      )
+    } else if (songObj.status.code === 2004) {
+      //? on song fingerprint failure
+      songInfo = [];
+      return (
+        <div className={Styles.errorBox}>
+          <h3 className={Styles.errorMessage}>couldn't detect audio</h3>
+          <h3 className={Styles.errorMessage}>please try again</h3>
         </div>
       )
     }
@@ -21,11 +59,6 @@ export default function ResponseBox({ songInfo }) {
 
 
     const id = songObj.metadata.music[0]
-    console.log('id.title', id.title)
-    console.log('id.artists.name', id.artists.name)
-    console.log('id.label', id.label)
-    console.log('id.release_date', id.release_date)
-    console.log('id.album.name', id.album.name)
 
     const title = id.title
     const artist = id.artists[0].name
@@ -39,6 +72,18 @@ export default function ResponseBox({ songInfo }) {
     const trackAlbum = 'Album: '
     const trackLabel = 'Label: '
 
+    let externalIdSpotify;
+    let externalIdYoutube;
+
+    if (id.external_metadata.spotify) {
+        externalIdSpotify = id.external_metadata.spotify.track.id
+    }
+
+    if (id.external_metadata.youtube) {
+        externalIdYoutube = id.external_metadata.youtube.vid
+    }
+
+    //? on song identification successful
     return (
       <div className={Styles.resBox}>
         <ResponseItem attribute={trackId} item={title}></ResponseItem>
@@ -46,11 +91,23 @@ export default function ResponseBox({ songInfo }) {
         <ResponseItem attribute={trackReleased} item={released}></ResponseItem>
         <ResponseItem attribute={trackAlbum} item={album}></ResponseItem>
         <ResponseItem attribute={trackLabel} item={label}></ResponseItem>
+        <div className={Styles.linkbox}>
+          <YtSearch className={Styles.yt} externalIdYoutube={externalIdYoutube} title={title} artist={artist}></YtSearch>
+          <SpotifySearch className={Styles.spotify} externalIdSpotify={externalIdSpotify} title={title} artist={artist} ></SpotifySearch>
+        </div>
       </div>
     )
-  } return (
+  }
+
+
+  //? On popup initialization
+  const firstMsg = 'navigate to an audible tab'
+  const secondMsg = 'click identify when ready'
+
+  return (
     <div className={Styles.emptyResBox}>
-      <h1>ready to go</h1>
+      <ResponseItem attribute={firstMsg}></ResponseItem>
+      <ResponseItem attribute={secondMsg}></ResponseItem>
     </div>
   )
 }

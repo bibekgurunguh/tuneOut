@@ -18,7 +18,7 @@ function handleCapture (stream, muteTab) {
     setTimeout(() => {
       recorder.stop();
       streamObject.getAudioTracks()[0].stop();
-    }, 6000);
+    }, 8000);
     recorder.ondataavailable = function(e) {
       let blob = new Blob([e.data], { type: 'audio/mp3' });
       const data = uploadStream(blob);
@@ -49,15 +49,15 @@ function toBuffer (stream) {
 
 export default function captureTab (tabId) {
 //~if there is no given tabId as an argument, check if active tab is audible
-  if (!tabId) {
-    chrome.tabs.query({ active: true, audible: false }, tabs => {
-      if (tabs.length) {
-        return error.noAudibleTab
-      } else {
-      tabId = tabs.id
-      }
-    })
-  }
+  // if (!tabId) {
+  //   chrome.tabs.query({ active: true, audible: false }, tabs => {
+  //     if (tabs.length) {
+  //       return error.noAudibleTab
+  //     } else {
+  //     tabId = tabs.id
+  //     }
+  //   })
+  // }
   //todo! -- add getId argument into function below
   return new Promise(resolve => {
     chrome.tabCapture.capture({ audio: true }, function(stream) {
@@ -70,9 +70,6 @@ export default function captureTab (tabId) {
     })
   })
 }
-
-
-
 
 
   //TODO add function which checks for tabs being actively captured

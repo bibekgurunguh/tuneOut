@@ -1,14 +1,17 @@
 /* global chrome*/
 import React from 'react'
 import Styles from './GetIdButton.css'
+import ResponseBox from './ResponseBox.js'
 // import identifyAudio from '../../../Arc-api/audio-request.js'
 
+export default function GetIdButton({ listAllTabs, getId, runLoadingAnimation }) {
 
 
-export default function GetIdButton({ getId }) {
 
 function handleClick(event) {
-    console.log('button clicked :)')
+  console.log('button clicked :)')
+  runLoadingAnimation()
+  console.log('loading function works')
   getId()
 }
 
