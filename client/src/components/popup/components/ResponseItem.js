@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Styles from './ResponseItem.css'
 
-export default function ResponseItem({ item }) {
+
+export default function ResponseItem({ item, attribute }) {
 
   return (
     <div>
-      <h3>{item}</h3>
+      <h3>{attribute }{item}</h3>
     </div>
   )
 }

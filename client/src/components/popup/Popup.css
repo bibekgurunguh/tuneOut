@@ -1,3 +1,7 @@
+body {
+  background-image: linear-gradient(rgb(255, 202, 239), rgb(233, 233, 233));
+
+}
 
 .container {
   display: flex;
@@ -6,7 +10,6 @@
   align-items: center;
   width: 275px;
   height: 400px;
-  background-image: linear-gradient(rgb(255, 202, 239), rgb(233, 233, 233));
 }
 
 .box {

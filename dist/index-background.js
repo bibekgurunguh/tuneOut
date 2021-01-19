@@ -1,11 +1,15 @@
-import 'regenerator-runtime/runtime.js';
+import 'regenerator-runtime/runtime';
 import { defaultOptions, identify_v2 } from '../Arc-api/audio-request.js'
 
 let recorder;
 let streamObject;
 
+const error = {
+  noAudibleTab: 'Please select an audible tab',
+}
 
-function handleCapture(stream, muteTab) {
+
+function handleCapture (stream, muteTab) {
   return new Promise(resolve => {
     const options = { mimeType: 'audio/webm; codecs=opus' };
     recorder = new MediaRecorder(stream, options);
@@ -23,7 +27,7 @@ function handleCapture(stream, muteTab) {
   })
 }
 
-function uploadStream(stream) {
+function uploadStream (stream) {
   return new Promise(resolve => {
     toBuffer(stream);
     identify_v2(stream, defaultOptions, function (body, httpResponse, err) {
@@ -44,6 +48,17 @@ function toBuffer (stream) {
 }
 
 export default function captureTab (tabId) {
+//~if there is no given tabId as an argument, check if active tab is audible
+  if (!tabId) {
+    chrome.tabs.query({ active: true, audible: false }, tabs => {
+      if (tabs.length) {
+        return error.noAudibleTab
+      } else {
+      tabId = tabs.id
+      }
+    })
+  }
+  //todo! -- add getId argument into function below
   return new Promise(resolve => {
     chrome.tabCapture.capture({ audio: true }, function(stream) {
       let audio = new Audio();
@@ -55,6 +70,7 @@ export default function captureTab (tabId) {
     })
   })
 }
+
 
 
 
@@ -72,7 +88,12 @@ export default function captureTab (tabId) {
     })
   }
 
+function listAllTabs () {
+  chrome.tabs.query({}, function(tabs) {
+    console.log('tabs', tabs);
+  });
+};
   // TODO add function which returns tabIDs for  audio playing
 
 
-
+// module.exports = { listAllTabs, captureTab }
