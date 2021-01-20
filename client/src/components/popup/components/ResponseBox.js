@@ -5,6 +5,7 @@ import Lottie from 'react-lottie';
 import animationData from '../animations/loading-animation.json'
 import YtSearch from './external-links/YtSearch.js'
 import SpotifySearch from './external-links/SpotifySearch.js'
+import DiscogsSearch from './external-links/DiscogsSearch.js'
 
 export default function ResponseBox({ songInfo, setSongInfo, animation }) {
 
@@ -94,6 +95,7 @@ export default function ResponseBox({ songInfo, setSongInfo, animation }) {
         <div className={Styles.linkbox}>
           <YtSearch className={Styles.yt} externalIdYoutube={externalIdYoutube} title={title} artist={artist}></YtSearch>
           <SpotifySearch className={Styles.spotify} externalIdSpotify={externalIdSpotify} title={title} artist={artist} ></SpotifySearch>
+          <DiscogsSearch artist={artist} album={album}></DiscogsSearch>
         </div>
       </div>
     )
@@ -102,7 +104,7 @@ export default function ResponseBox({ songInfo, setSongInfo, animation }) {
 
   //? On popup initialization
   const firstMsg = 'navigate to an audible tab'
-  const secondMsg = 'click identify when ready'
+  const secondMsg = 'click identify to start'
 
   return (
     <div className={Styles.emptyResBox}>

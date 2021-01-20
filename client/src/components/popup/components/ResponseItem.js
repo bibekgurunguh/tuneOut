@@ -7,7 +7,7 @@ export default function ResponseItem({ item, attribute }) {
 
   return (
     <div>
-      <h3 className={Styles.responseItem}><strong>{attribute}</strong>{item}</h3>
+      <h3 className={Styles.responseItem}><strong className={Styles.attribute}>{attribute}</strong>{item}</h3>
     </div>
   )
 }

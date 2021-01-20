@@ -17,7 +17,7 @@ export default function Popup() {
   const [errorMessage, setErrorMessage] = useState([]);
   const [animation, setAnimation] = useState(false)
 
-  const runLoadingAnimation = () => {
+  let runLoadingAnimation = () => {
     setAnimation(true)
     setTimeout(() => {
       setAnimation(false)
@@ -33,10 +33,8 @@ export default function Popup() {
   };
 
   const getId = async (tabId) => {
-
     const response = await captureTab(tabId)
     console.log('response', response);
-
     if (response.length < 30) {
       setErrorMessage(response);
       setSongInfo([]);

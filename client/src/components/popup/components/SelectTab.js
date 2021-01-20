@@ -13,6 +13,4 @@ export default function SelectTab() {
   )
 }
 
-      //   <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-      //   <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-      //   <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+//TODO - implement drop down menu to list all *currently* audible tabs. use listAllTabs() - located in popup.js

@@ -1,6 +1,7 @@
 body {
   background-image: linear-gradient(rgb(255, 202, 239), rgb(233, 233, 233));
-
+  width: 275px;
+  height: 425px;
 }
 
 .container {

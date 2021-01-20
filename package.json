@@ -37,15 +37,19 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "audiobuffer-to-wav": "^1.0.0",
     "axios": "^0.21.1",
+    "bootstrap": "^4.5.3",
     "copy-webpack-plugin": "^6.2.1",
     "css-loader": "^5.0.1",
     "form-data": "^3.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",
+    "react-lottie": "^1.2.3",
     "react-router-dom": "^5.2.0",
+    "react-spring": "^8.0.27",
     "regenerator-runtime": "^0.13.7",
     "style-loader": "^2.0.0",
     "underscore": "^1.12.0"

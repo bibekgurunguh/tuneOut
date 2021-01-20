@@ -8,7 +8,6 @@ const error = {
   noAudibleTab: 'Please select an audible tab',
 }
 
-
 function handleCapture (stream, muteTab) {
   return new Promise(resolve => {
     const options = { mimeType: 'audio/webm; codecs=opus' };
@@ -72,10 +71,15 @@ export default function captureTab (tabId) {
 }
 
 
-  //TODO add function which checks for tabs being actively captured
+
+
+
+
+
+  //! Unused functions below
   let currentTabId;
 
-  function checkActiveTab(capturedTabs) {
+function checkActiveTab(capturedTabs) {
     if (capturedTabs.some(tab => tab.tabId === currentTabId && tab.status === 'active')) {
       console.log('tab being captured')
     }
@@ -91,6 +95,3 @@ function listAllTabs () {
   });
 };
   // TODO add function which returns tabIDs for  audio playing
-
-
-// module.exports = { listAllTabs, captureTab }

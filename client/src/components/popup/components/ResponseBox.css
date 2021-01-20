@@ -2,7 +2,7 @@
   font-family: 'Courier New';
   padding: 15px;
   z-index: 11;
-
+  transition: 3s;
 }
 
 .emptyResBox {
@@ -34,7 +34,7 @@
   margin-bottom: 25px;
   display: flex;
   flex-direction: column;
-  justify-items: center;
+  align-items: center;
 }
 
 .linkbox {
