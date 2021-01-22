@@ -1,5 +1,5 @@
 import 'regenerator-runtime/runtime';
-import { defaultOptions, identify_v2 } from '../Arc-api/audio-request.js'
+import { defaultOptions, identify_v2 } from '../Arc-api/audio-request.ts'
 
 let recorder;
 let streamObject;
@@ -63,7 +63,7 @@ export default function captureTab (tabId) {
       let audio = new Audio();
       audio.srcObject = stream;
       audio.play();
-      const data = handleCapture(stream);
+      const data = handleCapture(stream, undefined);
       console.log('data', data);
       resolve(data);
     })

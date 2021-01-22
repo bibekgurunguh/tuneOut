@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Styles from './Popup.css';
-import captureTab from '../../index-js/index-background.js';
-import GetIdButton from './components/GetIdButton.js';
+import captureTab from '../../index-js/index-background.ts';
+import GetIdButton from './components/GetIdButton.ts';
 import Tuneoutlogo from '../../../../icons/Tuneoutlogo.svg';
-import SelectTab from './components/SelectTab.js'
-import ResponseBox from './components/ResponseBox.js'
+import SelectTab from './components/SelectTab.ts'
+import ResponseBox from './components/ResponseBox.ts'
 import Lottie from 'react-lottie';
 import animationData from './animations/loading-animation.json'
 

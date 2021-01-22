@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import ResponseItem from './ResponseItem.js'
+import ResponseItem from './ResponseItem.ts'
 import Styles from './ResponseBox.css'
 import Lottie from 'react-lottie';
 import animationData from '../animations/loading-animation.json'
-import YtSearch from './external-links/YtSearch.js'
-import SpotifySearch from './external-links/SpotifySearch.js'
-import DiscogsSearch from './external-links/DiscogsSearch.js'
+import YtSearch from './external-links/YtSearch.ts'
+import SpotifySearch from './external-links/SpotifySearch.ts'
+import DiscogsSearch from './external-links/DiscogsSearch.ts'
 
 export default function ResponseBox({ songInfo, setSongInfo, animation }) {
 

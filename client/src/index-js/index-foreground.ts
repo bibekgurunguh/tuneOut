@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Foreground from '../components/foreground/Foreground';
+import Foreground from '../components/foreground/Foreground.ts';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Foreground/>
+    <Foreground />
   </React.StrictMode>,
-  document.getElementById('foreground')
+  document.getElementById('foreground'),
 );
-
