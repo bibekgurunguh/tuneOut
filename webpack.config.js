@@ -15,6 +15,10 @@ module.exports = {
       __dirname,
       'client/src/index-js/index-foreground.tsx',
     ),
+    background: path.resolve(
+      __dirname,
+      'client/src/index-js/index-background.ts',
+    ),
   },
   devtool: 'inline-source-map',
   output: {
@@ -28,18 +32,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(t|j)sx?$/,
+        test: /\.(ts|tsx)$/,
         use: { loader: 'awesome-typescript-loader' },
       },
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'source-map-loader',
-      },
-      {
-        test: /\.tsx$/,
-        use: 'raw-loader',
-      },
+      // {
+      //   enforce: 'pre',
+      //   test: /\.js$/,
+      //   loader: 'source-map-loader',
+      // },
+      // {
+      //   test: /\.tsx$/,
+      //   use: 'raw-loader',
+      // },
       {
         test: /\.js$/,
         use: [
@@ -61,25 +65,40 @@ module.exports = {
         test: /\.html$/,
         use: ['html-loader'],
       },
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     'style-loader',
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         importLoaders: 1,
+      //         modules: true,
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      // {
+      //   test: /\.svg$/,
+      //   use: ['@svgr/webpack'],
+      // },
+      {
+        test: /\.svg$/,
         use: [
-          'style-loader',
           {
-            loader: 'css-loader',
+            loader: 'svg-url-loader',
             options: {
-              importLoaders: 1,
-              modules: true,
+              limit: 10000,
             },
           },
         ],
       },
       {
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
-      },
-      {
-        test: /\.(png|jp(e*)g|svg|gif)$/,
+        test: /\.(png|jp(e*)g|gif)$/,
         use: [
           {
             loader: 'file-loader',
@@ -111,10 +130,10 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: 'client/src/manifest.json', to: '[name].[ext]' },
-        {
-          from: 'client/src/index-js/index-background.tsx',
-          to: '[name].[ext]',
-        },
+        // {
+        //   from: 'client/src/index-js/index-background.ts',
+        //   to: '[name].[ext]',
+        // },
         { from: 'client/src/inject_script.js', to: '[name].[ext]' },
       ],
     }),

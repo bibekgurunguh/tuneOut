@@ -1,13 +1,14 @@
 /* global chrome*/
 
 import * as chrome from 'regenerator-runtime/runtime';
-import * as React from 'react';
+import React from 'react';
 import { useState } from 'react';
-import * as ReactDOM from 'react-dom';
+// import * as ReactDOM from 'react-dom';
 import './Popup.css';
 import { captureTab } from '../../index-js/index-background';
 import  { GetIdButton } from './components/GetIdButton';
-const Tuneoutlogo = require('C:/Users/flipo/CW/tuneOut/icons/Tuneoutlogo.svg');
+// const Tuneoutlogo = require('../../../icons/Tuneoutlogo.svg');
+import Tuneoutlogo from '../../../../icons/Tuneoutlogo.svg';
 import * as SelectTab from './components/SelectTab'
 import { ResponseBox } from './components/ResponseBox'
 import Lottie from 'react-lottie';
@@ -57,24 +58,28 @@ export default function Popup() {
 
   if (songInfo.length) {
     return (
-      <div className={'container'}>
-            <img className={'tuneoutlogo'} src={Tuneoutlogo} alt='tuneOut logo' />
+      <div className='container'>
+            <img className='tuneoutlogo' src={Tuneoutlogo} alt='tuneOut logo' />
             {/* <SelectTab></SelectTab> */}
             <ResponseBox animation={animation} setSongInfo={''} songInfo={songInfo}></ResponseBox>
-            <div className={'idBtn'}>
+            <div className='idBtn'>
               <GetIdButton runLoadingAnimation={runLoadingAnimation} getId={getId}></GetIdButton>
             </div>
       </div>
     )
   } return (
-    <div className={'container'}>
-      <img className={'tuneoutlogo'} src={Tuneoutlogo} alt='tuneOut logo' />
+    <div className='container'>
+      <img className='tuneoutlogo' src={Tuneoutlogo} alt='tuneOut logo' />
       <ResponseBox animation={animation} setSongInfo={''} songInfo={''}></ResponseBox>
       {/* <SelectTab></SelectTab> */}
-      <div className={'idBtn'}>
+      <div className='idBtn'>
         <GetIdButton runLoadingAnimation={runLoadingAnimation} getId={getId}></GetIdButton>
       </div>
     </div>
   )
+
+  // return (
+  //   <h1>Testing</h1>
+  // )
 }
 

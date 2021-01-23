@@ -13,15 +13,11 @@ body {
   height: 425px;
 }
 
-
-
 .tuneoutlogo {
   padding: 15px;
-  align-self: center
+  align-self: center;
 }
 
-
-
 .idBtn {
-
+  width: 100;
 }

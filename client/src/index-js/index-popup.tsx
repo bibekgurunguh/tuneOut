@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Popup from '../components/popup/Popup.tsx';
+import Popup from '../components/popup/Popup';
 
 
 ReactDOM.render(
