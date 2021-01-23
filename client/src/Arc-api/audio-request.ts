@@ -1,14 +1,18 @@
 // const url = require('url');
 
-const crypto = require('crypto');
+import * as FormData from 'form-data';
+import * as fetch from 'node-fetch';
+
+
+const { createHmac } = require('crypto');
 // const request = require('request');
 const axios = require('axios');
-const FormData = require('form-data');
-const fetch = require('node-fetch');
+// let FormData = require('form-data');
+// let fetch = require('node-fetch');
 
 // const FormData = require ('form-data')
 
-const defaultOptions = {
+export const defaultOptions = {
   host: 'identify-eu-west-1.acrcloud.com',
   endpoint: '/v1/identify',
   signature_version: '1',
@@ -18,19 +22,19 @@ const defaultOptions = {
   access_secret: 'QO3uR9K1GC626FjTLADGvQ7wWYWlzciJEs8VukbU' //! Store in .env file??
 };
 
-function buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
+export function buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
   return [method, uri, accessKey, dataType, signatureVersion, timestamp].join('\n');
 }
 
-function sign(signString, accessSecret) {
-  return crypto.createHmac('sha1', accessSecret)
+export function sign(signString, accessSecret) {
+  return createHmac('sha1', accessSecret)
     .update(Buffer.from(signString, 'utf-8'))
 
     .digest().toString('base64');
 }
 
 
-function identify_v2(data, options, cb) {
+export function identify_v2(data, options, cb) {
 
   const current_data = new Date();
   const timestamp = current_data.getTime()/1000;
@@ -69,5 +73,3 @@ function identify_v2(data, options, cb) {
       .then((res) => {cb(res, null)})
       .catch((err) => {cb(null, err)});
 }
-
-module.exports = { defaultOptions, buildStringToSign, sign, identify_v2 }
