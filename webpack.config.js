@@ -9,20 +9,37 @@ module.exports = {
     historyApiFallback: true,
   },
   entry: {
-    popup: path.resolve(__dirname, 'client/src/index-js/index-popup.ts'),
-    options: path.resolve(__dirname, 'client/src/index-js/index-options.ts'),
+    popup: path.resolve(__dirname, 'client/src/index-js/index-popup.tsx'),
+    options: path.resolve(__dirname, 'client/src/index-js/index-options.tsx'),
     foreground: path.resolve(
       __dirname,
-      'client/src/index-js/index-foreground.ts',
+      'client/src/index-js/index-foreground.tsx',
     ),
   },
+  devtool: 'inline-source-map',
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  resolve: {
+    // Add '.ts' and '.tsx' as resolvable extensions.
+    extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js'],
+  },
   module: {
     rules: [
-      { test: /\.ts$/, use: 'raw-loader' },
+      {
+        test: /\.(t|j)sx?$/,
+        use: { loader: 'awesome-typescript-loader' },
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader',
+      },
+      {
+        test: /\.tsx$/,
+        use: 'raw-loader',
+      },
       {
         test: /\.js$/,
         use: [
@@ -94,7 +111,10 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: 'client/src/manifest.json', to: '[name].[ext]' },
-        { from: 'client/src/index-js/index-background.ts', to: '[name].[ext]' },
+        {
+          from: 'client/src/index-js/index-background.tsx',
+          to: '[name].[ext]',
+        },
         { from: 'client/src/inject_script.js', to: '[name].[ext]' },
       ],
     }),

@@ -1,14 +1,14 @@
-const responseObject {
-  title: xxx,
+const responseObject = {
+  title: 'xxx',
   artists: {
-    name: xxx
+    name: 'xxx'
   },
   album: {
-    name: xxx
+    name: 'xxx'
   },
-  label: xxx,
-  release_date: xxx,
-},
+  label: 'xxx',
+  release_date: 'xxx',
+};
 
 
 const response = {status: {
@@ -39,8 +39,8 @@ const response = {status: {
 
 
 
-        <Lottie
-        options={defaultOptions}
-        height={400}
-        width={150}
-        />
+        // <Lottie
+        // options={defaultOptions}
+        // height={400}
+        // width={150}
+        // />

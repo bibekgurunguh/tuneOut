@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { useTransition, animated } from 'react-spring';
-import Styles from './SelectTab.css'
+import './SelectTab.css'
 
-export default function SelectTab() {
+export function SelectTab() {
 
 
 
   return (
-    <div className={Styles.dropdownContainer}>
+    <div className={'dropdownContainer'}>
     </div>
   )
 }

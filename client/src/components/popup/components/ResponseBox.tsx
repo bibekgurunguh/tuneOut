@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
-import ResponseItem from './ResponseItem.ts'
-import Styles from './ResponseBox.css'
+import * as React from 'react';
+import ResponseItem from './ResponseItem'
+import './ResponseBox.css'
 import Lottie from 'react-lottie';
-import animationData from '../animations/loading-animation.json'
-import YtSearch from './external-links/YtSearch.ts'
-import SpotifySearch from './external-links/SpotifySearch.ts'
-import DiscogsSearch from './external-links/DiscogsSearch.ts'
+// import animationData from '../animations/loading-animation.json'
+const animationData = require("../animations/loading-animation.json");
+import YtSearch from './external-links/YtSearch'
+import SpotifySearch from './external-links/SpotifySearch'
+import DiscogsSearch from './external-links/DiscogsSearch'
 
-export default function ResponseBox({ songInfo, setSongInfo, animation }) {
+export function ResponseBox({ songInfo, setSongInfo, animation }) {
 
 
   const defaultOptions = {
@@ -21,7 +22,7 @@ export default function ResponseBox({ songInfo, setSongInfo, animation }) {
 
   if (animation === true) {
     return (
-      <div className={Styles.animation}>
+      <div className={'animation'}>
         <Lottie
           options={defaultOptions}
           height={260}
@@ -38,18 +39,18 @@ export default function ResponseBox({ songInfo, setSongInfo, animation }) {
       //? on song identification failure
       songInfo = [];
       return (
-        <div className={Styles.errorBox}>
-          <h3 className={Styles.errorMessage}>couldn't identify track</h3>
-          <h3 className={Styles.errorMessage}>please try again</h3>
+        <div className={'errorBox'}>
+          <h3 className={'errorMessage'}>couldn't identify track</h3>
+          <h3 className={'errorMessage'}>please try again</h3>
         </div>
       )
     } else if (songObj.status.code === 2004) {
       //? on song fingerprint failure
       songInfo = [];
       return (
-        <div className={Styles.errorBox}>
-          <h3 className={Styles.errorMessage}>couldn't detect audio</h3>
-          <h3 className={Styles.errorMessage}>please try again</h3>
+        <div className={'errorBox'}>
+          <h3 className={'errorMessage'}>couldn't detect audio</h3>
+          <h3 className={'errorMessage'}>please try again</h3>
         </div>
       )
     }
@@ -86,15 +87,19 @@ export default function ResponseBox({ songInfo, setSongInfo, animation }) {
 
     //? on song identification successful
     return (
-      <div className={Styles.resBox}>
+      <div className={'resBox'}>
         <ResponseItem attribute={trackId} item={title}></ResponseItem>
         <ResponseItem attribute={trackArtist} item={artist}></ResponseItem>
         <ResponseItem attribute={trackReleased} item={released}></ResponseItem>
         <ResponseItem attribute={trackAlbum} item={album}></ResponseItem>
         <ResponseItem attribute={trackLabel} item={label}></ResponseItem>
-        <div className={Styles.linkbox}>
-          <YtSearch className={Styles.yt} externalIdYoutube={externalIdYoutube} title={title} artist={artist}></YtSearch>
-          <SpotifySearch className={Styles.spotify} externalIdSpotify={externalIdSpotify} title={title} artist={artist} ></SpotifySearch>
+        <div className={'linkbox'}>
+          <div className='yt'>
+            <YtSearch externalIdYoutube={externalIdYoutube} title={title} artist={artist}></YtSearch>
+          </div>
+          <div className='spotify'>
+            <SpotifySearch externalIdSpotify={externalIdSpotify} title={title} artist={artist} ></SpotifySearch>
+          </div>
           <DiscogsSearch artist={artist} album={album}></DiscogsSearch>
         </div>
       </div>
@@ -107,9 +112,9 @@ export default function ResponseBox({ songInfo, setSongInfo, animation }) {
   const secondMsg = 'click identify to start'
 
   return (
-    <div className={Styles.emptyResBox}>
-      <ResponseItem attribute={firstMsg}></ResponseItem>
-      <ResponseItem attribute={secondMsg}></ResponseItem>
+    <div className={'emptyResBox'}>
+      <ResponseItem attribute={firstMsg} item={''}></ResponseItem>
+      <ResponseItem attribute={secondMsg} item={''}></ResponseItem>
     </div>
   )
 }

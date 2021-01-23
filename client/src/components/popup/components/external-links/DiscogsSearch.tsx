@@ -1,5 +1,5 @@
-import React from 'react'
-import discogsIcon from './discogsIcon.svg'
+import * as React from 'react';
+const discogsIcon =  require('./discogsIcon.svg');
 
 export default function DiscogsSearch({ artist, album }) {
 

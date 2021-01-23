@@ -1,16 +1,16 @@
-import 'regenerator-runtime/runtime';
-import { defaultOptions, identify_v2 } from '../Arc-api/audio-request.ts'
+import * as chrome from 'regenerator-runtime/runtime';
+import { defaultOptions, identify_v2 } from '../Arc-api/audio-request';
 
-let recorder;
-let streamObject;
+let recorder: MediaRecorder;
+let streamObject: MediaStream;
 
-const error = {
+const error: {noAudibleTab: string;} = {
   noAudibleTab: 'Please select an audible tab',
 }
 
-function handleCapture (stream, muteTab) {
+function handleCapture (stream: MediaStream, muteTab) {
   return new Promise(resolve => {
-    const options = { mimeType: 'audio/webm; codecs=opus' };
+    const options:{mimeType: string} = { mimeType: 'audio/webm; codecs=opus' };
     recorder = new MediaRecorder(stream, options);
     streamObject = stream;
     recorder.start();
@@ -46,7 +46,7 @@ function toBuffer (stream) {
   return buffer;
 }
 
-export default function captureTab (tabId) {
+export const captureTab = (tabId) => {
 //~if there is no given tabId as an argument, check if active tab is audible
   // if (!tabId) {
   //   chrome.tabs.query({ active: true, audible: false }, tabs => {
@@ -63,7 +63,7 @@ export default function captureTab (tabId) {
       let audio = new Audio();
       audio.srcObject = stream;
       audio.play();
-      const data = handleCapture(stream);
+      const data = handleCapture(stream, undefined);
       console.log('data', data);
       resolve(data);
     })
@@ -77,21 +77,21 @@ export default function captureTab (tabId) {
 
 
   //! Unused functions below
-  let currentTabId;
+  // let currentTabId;
 
-function checkActiveTab(capturedTabs) {
-    if (capturedTabs.some(tab => tab.tabId === currentTabId && tab.status === 'active')) {
-      console.log('tab being captured')
-    }
+  // function checkActiveTab(capturedTabs) {
+  //     if (capturedTabs.some(tab => tab.tabId === currentTabId && tab.status === 'active')) {
+  //       console.log('tab being captured')
+  //     }
 
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-      currentTabId = tabs[0].id
-    })
-  }
+  //     chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+  //       currentTabId = tabs[0].id
+  //     })
+  //   }
 
-function listAllTabs () {
-  chrome.tabs.query({}, function(tabs) {
-    console.log('tabs', tabs);
-  });
-};
+  // function listAllTabs () {
+  //   chrome.tabs.query({}, function(tabs) {
+  //     console.log('tabs', tabs);
+  //   });
+  // };
   // TODO add function which returns tabIDs for  audio playing

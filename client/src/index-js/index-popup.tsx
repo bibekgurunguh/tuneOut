@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Options from '../components/options/Options';
+import Popup from '../components/popup/Popup.tsx';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Options/>
+    <Popup/>
   </React.StrictMode>,
-  document.getElementById('options')
+  document.getElementById('popup')
 );
+
 

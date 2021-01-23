@@ -1,11 +1,11 @@
 /* global chrome*/
-import React from 'react';
-import Styles from './GetIdButton.css';
-import ResponseBox from './ResponseBox.ts';
+import * as React from 'react';
+import './GetIdButton.css';
+// import ResponseBox from './ResponseBox';
 // import identifyAudio from '../../../Arc-api/audio-request.ts'
 
-export default function GetIdButton({
-  listAllTabs,
+export function GetIdButton({
+  // listAllTabs,
   getId,
   runLoadingAnimation,
 }) {
@@ -18,7 +18,7 @@ export default function GetIdButton({
 
   return (
     <div>
-      <button className={Styles.button} onClick={handleClick}>
+      <button className={'button'} onClick={handleClick}>
         identify
       </button>
     </div>

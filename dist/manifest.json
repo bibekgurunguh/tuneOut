@@ -5,7 +5,7 @@
   "manifest_version": 2,
   "background": {
     "scripts": [
-      "./index-background.js"
+      "./index-background.tsx"
     ]
   },
   "options_page": "./idx-options.html",
