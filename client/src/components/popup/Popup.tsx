@@ -33,15 +33,16 @@ export default function Popup() {
     }, 9000)
   }
 
-  const listAllTabs = async () => {
-    const response =  await chrome.tabs.query({audible: true}, function(tabs) {
-      console.log('tabs', tabs);
-      return tabs;
-    });
-    setTabs(response)
-  };
+  // const listAllTabs = async () => {
+  //   const response =  await chrome.tabs.query({audible: true}, function(tabs) {
+  //     console.log('tabs', tabs);
+  //     return tabs;
+  //   });
+  //   setTabs(response)
+  // };
 
-  const getId = async (tabId) => {
+  async function getId (tabId) {
+    console.log('Running getID function from Popup.tsx')
     const response: any = await captureTab(tabId)
     console.log('response', response);
     if (response.length < 30) {
@@ -69,6 +70,7 @@ export default function Popup() {
     )
   } return (
     <div className='container'>
+      <div>Typescript</div>
       <img className='tuneoutlogo' src={Tuneoutlogo} alt='tuneOut logo' />
       <ResponseBox animation={animation} setSongInfo={''} songInfo={''}></ResponseBox>
       {/* <SelectTab></SelectTab> */}

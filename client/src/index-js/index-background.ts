@@ -1,4 +1,7 @@
-import * as chrome from 'regenerator-runtime/runtime';
+/*global chrome*/
+/// <reference types="chrome" />
+
+import 'regenerator-runtime/runtime';
 import { defaultOptions, identify_v2 } from '../Arc-api/audio-request';
 
 let recorder: MediaRecorder;
@@ -8,7 +11,7 @@ const error: {noAudibleTab: string;} = {
   noAudibleTab: 'Please select an audible tab',
 }
 
-function handleCapture (stream: MediaStream, muteTab) {
+function handleCapture (stream, muteTab) {
   return new Promise(resolve => {
     const options:{mimeType: string} = { mimeType: 'audio/webm; codecs=opus' };
     recorder = new MediaRecorder(stream, options);
@@ -59,6 +62,8 @@ export const captureTab = (tabId) => {
   // }
   //todo! -- add getId argument into function below
   return new Promise(resolve => {
+    console.log('chrome', chrome);
+    console.log('chrome.tabCapture', chrome.tabCapture);
     chrome.tabCapture.capture({ audio: true }, function(stream) {
       let audio = new Audio();
       audio.srcObject = stream;
