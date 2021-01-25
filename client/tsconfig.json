@@ -9,6 +9,7 @@
     "types": [
       "react",
       "node",
+      "jest",
       "dom-mediacapture-record"
     ] /* Type declaration files to be included in compilation. */,
     "module": "esNext" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
