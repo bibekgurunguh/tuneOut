@@ -10,9 +10,7 @@ export function GetIdButton({
   runLoadingAnimation,
 }) {
   function handleClick(event) {
-    console.log('button clicked :)');
     runLoadingAnimation();
-    console.log('loading function works');
     getId();
   }
 

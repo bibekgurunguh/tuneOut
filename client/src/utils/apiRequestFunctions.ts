@@ -36,8 +36,7 @@ export function sign(signString, accessSecret) {
 
 export function identify_v2(data, options, cb) {
 
-  const current_data = new Date();
-  const timestamp = current_data.getTime()/1000;
+  const timestamp = new Date().getTime()/1000;
 
   const stringToSign = buildStringToSign('POST',
       options.endpoint,
@@ -45,16 +44,6 @@ export function identify_v2(data, options, cb) {
       options.data_type,
       options.signature_version,
       timestamp);
-
-  const defaultOptions = {
-    host: 'identify-eu-west-1.acrcloud.com',
-    endpoint: '/v1/identify',
-    signature_version: '1',
-    data_type:'audio',
-    secure: true,
-    access_key: 'a735916ac5e523565ecf5a2d872ac541',
-    access_secret: 'QO3uR9K1GC626FjTLADGvQ7wWYWlzciJEs8VukbU' //! Store in .env file??
-  };
 
   const signature = sign(stringToSign, options.access_secret);
 
