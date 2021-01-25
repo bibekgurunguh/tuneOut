@@ -2,84 +2,72 @@
 /// <reference types="chrome" />
 
 import 'regenerator-runtime/runtime';
-import { defaultOptions, identify_v2 } from '../Arc-api/audio-request';
+import {
+  handleCapture,
+  duplicateAudioStream,
+} from '../utils/audioCaptureHelperFunctions';
 
-let recorder: MediaRecorder;
-let streamObject: MediaStream;
+export const captureAudioFromCurrentTab = () => {
 
-const error: {noAudibleTab: string;} = {
-  noAudibleTab: 'Please select an audible tab',
-}
-
-function handleCapture (stream, muteTab) {
   return new Promise(resolve => {
-    const options:{mimeType: string} = { mimeType: 'audio/webm; codecs=opus' };
-    recorder = new MediaRecorder(stream, options);
-    streamObject = stream;
-    recorder.start();
-    setTimeout(() => {
-      recorder.stop();
-      streamObject.getAudioTracks()[0].stop();
-    }, 8000);
-    recorder.ondataavailable = function(e) {
-      let blob = new Blob([e.data], { type: 'audio/mp3' });
-      const data = uploadStream(blob);
-      resolve(data);
+    try {
+      chrome.tabCapture.capture({ audio: true }, function(stream) {
+        const audioCopy = duplicateAudioStream(stream);
+        audioCopy.play();
+        const data = handleCapture(stream, undefined);
+        console.log('data', data);
+        resolve(data);
+      })
+    } catch (err) {
     }
   })
 }
 
-function uploadStream (stream) {
-  return new Promise(resolve => {
-    toBuffer(stream);
-    identify_v2(stream, defaultOptions, function (body, httpResponse, err) {
-        if (err) console.log();
-        console.log('test body', body);
-        resolve(body);
-    })
-  })
-}
 
-function toBuffer (stream) {
-  let buffer = Buffer.alloc(stream.size);
-  let view = new Uint8Array(stream);
-  for (let i = 0; i < buffer.length; ++i) {
-    buffer[i] = view[i];
-  }
-  return buffer;
-}
 
-export const captureTab = (tabId) => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const error: {noAudibleTab: string;} = {
+//   noAudibleTab: 'Please select an audible tab',
+// }
+
+
+
+// function toBuffer (stream) {
+//   let buffer = Buffer.alloc(stream.size);
+//   let view = new Uint8Array(stream);
+//   for (let i = 0; i < buffer.length; ++i) {
+//     buffer[i] = view[i];
+//   }
+//   return buffer;
+// }
+
+
+// Features to add
+
 //~if there is no given tabId as an argument, check if active tab is audible
-  // if (!tabId) {
-  //   chrome.tabs.query({ active: true, audible: false }, tabs => {
-  //     if (tabs.length) {
-  //       return error.noAudibleTab
-  //     } else {
-  //     tabId = tabs.id
-  //     }
-  //   })
-  // }
-  //todo! -- add getId argument into function below
-  return new Promise(resolve => {
-    console.log('chrome', chrome);
-    console.log('chrome.tabCapture', chrome.tabCapture);
-    chrome.tabCapture.capture({ audio: true }, function(stream) {
-      let audio = new Audio();
-      audio.srcObject = stream;
-      audio.play();
-      const data = handleCapture(stream, undefined);
-      console.log('data', data);
-      resolve(data);
-    })
-  })
-}
-
-
-
-
-
-
+// if (!tabId) {
+//   chrome.tabs.query({ active: true, audible: false }, tabs => {
+//     if (tabs.length) {
+//       return error.noAudibleTab
+//     } else {
+//     tabId = tabs.id
+//     }
+//   })
+// }
+//todo! -- add getId argument into function below
 
   //! Unused functions below
   // let currentTabId;
