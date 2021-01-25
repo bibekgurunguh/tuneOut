@@ -2,7 +2,7 @@
 /// <reference types="chrome" />
 
 import 'regenerator-runtime/runtime';
-import { defaultOptions, identify_v2 } from '../Arc-api/audio-request';
+import { defaultOptions, identify_v2 } from '../utils/apiRequestFunctions';
 
 let recorder: MediaRecorder;
 let streamObject: MediaStream;
@@ -62,8 +62,6 @@ export const captureTab = (tabId) => {
   // }
   //todo! -- add getId argument into function below
   return new Promise(resolve => {
-    console.log('chrome', chrome);
-    console.log('chrome.tabCapture', chrome.tabCapture);
     chrome.tabCapture.capture({ audio: true }, function(stream) {
       let audio = new Audio();
       audio.srcObject = stream;

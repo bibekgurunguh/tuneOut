@@ -1,5 +1,403 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<ResponseBox /> Links container should render links container to match previous snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="resBox"
+      >
+        <div>
+          <h3
+            class="responseItem"
+          >
+            <strong
+              class="attribute"
+            >
+              Track ID: 
+            </strong>
+            Clint Eastwood
+          </h3>
+        </div>
+        <div>
+          <h3
+            class="responseItem"
+          >
+            <strong
+              class="attribute"
+            >
+              Artist: 
+            </strong>
+            Gorillaz
+          </h3>
+        </div>
+        <div>
+          <h3
+            class="responseItem"
+          >
+            <strong
+              class="attribute"
+            >
+              Released: 
+            </strong>
+            2001-03-26
+          </h3>
+        </div>
+        <div>
+          <h3
+            class="responseItem"
+          >
+            <strong
+              class="attribute"
+            >
+              Album: 
+            </strong>
+            Gorillaz
+          </h3>
+        </div>
+        <div>
+          <h3
+            class="responseItem"
+          >
+            <strong
+              class="attribute"
+            >
+              Label: 
+            </strong>
+            Parlophone UK
+          </h3>
+        </div>
+        <div
+          class="linkbox"
+        >
+          <div
+            class="yt"
+          >
+            <div>
+              <a
+                href="https://www.youtube.com/watch?v=UclCCFNG9q4"
+                target="_blank"
+              >
+                <img
+                  alt="Listen on Youtube"
+                  class="ytlogo"
+                  src="test-file-stub"
+                />
+              </a>
+            </div>
+          </div>
+          <div
+            class="spotify"
+          >
+            <div>
+              <a
+                href="https://open.spotify.com/track/0TdP50dxBM62cWvnocDv5r"
+                target="_blank"
+              >
+                <img
+                  alt="Listen on Spotify"
+                  class="spotifylogo"
+                  src="test-file-stub"
+                />
+              </a>
+            </div>
+          </div>
+          <div>
+            <a
+              href="https://www.discogs.com/search/?q=Gorillaz+Gorillaz&type=all"
+              target="_blank"
+            >
+              <img
+                alt="Search on Discogs"
+                src="test-file-stub"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="resBox"
+      >
+        <div>
+          <h3
+            class="responseItem"
+          >
+            <strong
+              class="attribute"
+            >
+              Track ID: 
+            </strong>
+            Clint Eastwood
+          </h3>
+        </div>
+        <div>
+          <h3
+            class="responseItem"
+          >
+            <strong
+              class="attribute"
+            >
+              Artist: 
+            </strong>
+            Gorillaz
+          </h3>
+        </div>
+        <div>
+          <h3
+            class="responseItem"
+          >
+            <strong
+              class="attribute"
+            >
+              Released: 
+            </strong>
+            2001-03-26
+          </h3>
+        </div>
+        <div>
+          <h3
+            class="responseItem"
+          >
+            <strong
+              class="attribute"
+            >
+              Album: 
+            </strong>
+            Gorillaz
+          </h3>
+        </div>
+        <div>
+          <h3
+            class="responseItem"
+          >
+            <strong
+              class="attribute"
+            >
+              Label: 
+            </strong>
+            Parlophone UK
+          </h3>
+        </div>
+        <div
+          class="linkbox"
+        >
+          <div
+            class="yt"
+          >
+            <div>
+              <a
+                href="https://www.youtube.com/watch?v=UclCCFNG9q4"
+                target="_blank"
+              >
+                <img
+                  alt="Listen on Youtube"
+                  class="ytlogo"
+                  src="test-file-stub"
+                />
+              </a>
+            </div>
+          </div>
+          <div
+            class="spotify"
+          >
+            <div>
+              <a
+                href="https://open.spotify.com/track/0TdP50dxBM62cWvnocDv5r"
+                target="_blank"
+              >
+                <img
+                  alt="Listen on Spotify"
+                  class="spotifylogo"
+                  src="test-file-stub"
+                />
+              </a>
+            </div>
+          </div>
+          <div>
+            <a
+              href="https://www.discogs.com/search/?q=Gorillaz+Gorillaz&type=all"
+              target="_blank"
+            >
+              <img
+                alt="Search on Discogs"
+                src="test-file-stub"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="resBox"
+    >
+      <div>
+        <h3
+          class="responseItem"
+        >
+          <strong
+            class="attribute"
+          >
+            Track ID: 
+          </strong>
+          Clint Eastwood
+        </h3>
+      </div>
+      <div>
+        <h3
+          class="responseItem"
+        >
+          <strong
+            class="attribute"
+          >
+            Artist: 
+          </strong>
+          Gorillaz
+        </h3>
+      </div>
+      <div>
+        <h3
+          class="responseItem"
+        >
+          <strong
+            class="attribute"
+          >
+            Released: 
+          </strong>
+          2001-03-26
+        </h3>
+      </div>
+      <div>
+        <h3
+          class="responseItem"
+        >
+          <strong
+            class="attribute"
+          >
+            Album: 
+          </strong>
+          Gorillaz
+        </h3>
+      </div>
+      <div>
+        <h3
+          class="responseItem"
+        >
+          <strong
+            class="attribute"
+          >
+            Label: 
+          </strong>
+          Parlophone UK
+        </h3>
+      </div>
+      <div
+        class="linkbox"
+      >
+        <div
+          class="yt"
+        >
+          <div>
+            <a
+              href="https://www.youtube.com/watch?v=UclCCFNG9q4"
+              target="_blank"
+            >
+              <img
+                alt="Listen on Youtube"
+                class="ytlogo"
+                src="test-file-stub"
+              />
+            </a>
+          </div>
+        </div>
+        <div
+          class="spotify"
+        >
+          <div>
+            <a
+              href="https://open.spotify.com/track/0TdP50dxBM62cWvnocDv5r"
+              target="_blank"
+            >
+              <img
+                alt="Listen on Spotify"
+                class="spotifylogo"
+                src="test-file-stub"
+              />
+            </a>
+          </div>
+        </div>
+        <div>
+          <a
+            href="https://www.discogs.com/search/?q=Gorillaz+Gorillaz&type=all"
+            target="_blank"
+          >
+            <img
+              alt="Search on Discogs"
+              src="test-file-stub"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
 exports[`<ResponseBox /> should render various elements of the song result correctly rendered ResponseBox matches the existing snapshot when songInfo is provided 1`] = `
 Object {
   "asFragment": [Function],

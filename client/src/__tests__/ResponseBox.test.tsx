@@ -9,10 +9,11 @@ import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
 import 'jest-canvas-mock';
 
-import { mockSongInfo } from '../../__mocks__/mocks';
+import { mockSongInfo, clintEastwoodSongInfo } from '../../__mocks__/mocks';
 
 import ResponseItem from '../components/popup/components/ResponseItem';
 import { ResponseBox } from '../components/popup/components/ResponseBox';
+import Popup from '../components/popup/Popup'
 
 describe('<ResponseBox /> should render various elements of the song result correctly', () => {
   beforeEach(() => {
@@ -69,9 +70,57 @@ describe('<ResponseBox /> should render various elements of the song result corr
   });
 });
 
+describe('<ResponseBox /> Links container', () => {
+  beforeEach(() => {
+    render(
+      <ResponseBox
+        animation={false}
+        setSongInfo={''}
+        songInfo={JSON.stringify(clintEastwoodSongInfo)}
+      ></ResponseBox>,
+    );
+  });
+  it('should display links container', () => {
+    const trackId = document.querySelector('.linkbox');
+    expect(trackId).toBeInTheDocument();
+  });
+  it('should display youtube button', () => {
+    const trackId = document.querySelector('.yt');
+    expect(trackId).toBeInTheDocument();
+  });
+  it('should display spotify button', () => {
+    const trackId = document.querySelector('.spotify');
+    expect(trackId).toBeInTheDocument();
+  });
+  it('should display discogs button', () => {
+    const trackId = screen.getByAltText('Search on Discogs');
+    expect(trackId).toBeInTheDocument();
+  });
+  test('should render links container to match previous snapshot', () => {
+    const linkboxSnap = render(<ResponseBox
+      animation={false}
+      setSongInfo={''}
+      songInfo={JSON.stringify(clintEastwoodSongInfo)}
+    ></ResponseBox>);
+    expect(linkboxSnap).toMatchSnapshot();
+  });
+});
+
 describe('<ResponseItem />', () => {
   test('should render responseItem to match previous snapshot', () => {
     const tree = render(<ResponseItem item="trackId" attribute="Woods" />);
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Identify button', () => {
+  beforeEach(() => {
+    render(
+      <Popup />,
+    );
+  });
+  it('should display identify button', () => {
+    const button = screen.getByRole('button');
+    expect(button).toBeInTheDocument();
   });
 });
