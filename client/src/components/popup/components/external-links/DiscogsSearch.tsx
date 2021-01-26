@@ -1,7 +1,12 @@
 import * as React from 'react';
 const discogsIcon =  require('./discogsIcon.svg');
 
-export default function DiscogsSearch({ artist, album }) {
+interface PropsType {
+  artist: string
+  album: string,
+}
+
+export default function DiscogsSearch({ artist, album }: PropsType) {
 
   const searchURL = `https://www.discogs.com/search/?q=${artist}+${album}&type=all`
 

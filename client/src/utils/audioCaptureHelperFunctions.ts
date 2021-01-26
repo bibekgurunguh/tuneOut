@@ -6,9 +6,9 @@ import {
 let recorder: MediaRecorder;
 let streamObject: MediaStream;
 
-export const recordAudioStream = (stream: MediaStream | null) => {
-  if (!stream) return;
-  return new Promise((resolve) => {
+export const recordAudioStream = (stream: MediaStream | undefined) => {
+  if (!stream) throw new Error('Stream is undefined.');
+  return new Promise<string>((resolve) => {
     const options: { mimeType: string } = {
       mimeType: 'audio/webm; codecs=opus',
     };
@@ -29,11 +29,11 @@ export const recordAudioStream = (stream: MediaStream | null) => {
 
 export const triggerApiCall = (stream: Blob) => {
   console.log('stream in triggerApI', stream);
-  return new Promise((resolve) => {
+  return new Promise<string>((resolve) => {
     requestSongInfoUsingBlob(
       stream,
       defaultApiOptions,
-      function (body: {}, httpResponse: null, err: Error) {
+      function (body: string, httpResponse: null, err: Error) {
         if (err) console.error('Error: ', err);
         resolve(body);
       },

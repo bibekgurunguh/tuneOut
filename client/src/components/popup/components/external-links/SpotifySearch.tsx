@@ -3,7 +3,13 @@ import './SpotifySearch.css'
 // import spotifyIcon from './spotifyIcon.svg'
 const spotifyIcon = require('./spotifyIcon.svg');
 
-export default function SpotifySearch({ externalIdSpotify, title, artist}) {
+interface PropsType {
+  externalIdSpotify: string | undefined,
+  title: string,
+  artist: string
+}
+
+export default function SpotifySearch({ externalIdSpotify, title, artist}: PropsType) {
 
 
   if (externalIdSpotify) {

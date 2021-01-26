@@ -2,7 +2,13 @@ import * as React from 'react';
 import './YtSearch.css';
 const ytIcon2 = require('./ytIcon2.svg');
 
-export default function YtSearch({ externalIdYoutube, title, artist }) {
+interface PropsType {
+  externalIdYoutube: string | undefined,
+  title: string,
+  artist: string
+}
+
+export default function YtSearch({ externalIdYoutube, title, artist }: PropsType) {
 
   if (externalIdYoutube) {
     let vidLink = `https://www.youtube.com/watch?v=${externalIdYoutube}`

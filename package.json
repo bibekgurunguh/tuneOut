@@ -47,6 +47,7 @@
   "dependencies": {
     "@types/chrome": "0.0.128",
     "@types/form-data": "^2.5.0",
+    "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/regenerator-runtime": "^0.13.0",
     "animate.css": "^4.1.1",

@@ -8,7 +8,7 @@ import {
 } from '../utils/audioCaptureHelperFunctions';
 
 export const captureAudioFromCurrentTab = () => {
-  return new Promise((resolve) => {
+  return new Promise<string>((resolve) => {
     try {
       chrome.tabCapture.capture({ audio: true }, function (stream) {
         if (!stream) return;
