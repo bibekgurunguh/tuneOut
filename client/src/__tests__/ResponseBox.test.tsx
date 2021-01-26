@@ -20,8 +20,7 @@ describe('<ResponseBox /> should render various elements of the song result corr
     render(
       <ResponseBox
         animation={false}
-        setSongInfo={''}
-        songInfo={JSON.stringify(mockSongInfo)}
+        stringifiedSongInfo={JSON.stringify(mockSongInfo)}
       ></ResponseBox>,
     );
   });
@@ -61,9 +60,8 @@ describe('<ResponseBox /> should render various elements of the song result corr
   test('rendered ResponseBox matches the existing snapshot when songInfo is provided', () => {
     const tree = render(
       <ResponseBox
-        songInfo={JSON.stringify(mockSongInfo)}
-        setSongInfo=""
-        animation="false"
+        stringifiedSongInfo={JSON.stringify(mockSongInfo)}
+        animation={false}
       />,
     );
     expect(tree).toMatchSnapshot();
@@ -75,8 +73,7 @@ describe('<ResponseBox /> Links container', () => {
     render(
       <ResponseBox
         animation={false}
-        setSongInfo={''}
-        songInfo={JSON.stringify(clintEastwoodSongInfo)}
+        stringifiedSongInfo={JSON.stringify(clintEastwoodSongInfo)}
       ></ResponseBox>,
     );
   });
@@ -99,8 +96,7 @@ describe('<ResponseBox /> Links container', () => {
   test('should render links container to match previous snapshot', () => {
     const linkboxSnap = render(<ResponseBox
       animation={false}
-      setSongInfo={''}
-      songInfo={JSON.stringify(clintEastwoodSongInfo)}
+      stringifiedSongInfo={JSON.stringify(clintEastwoodSongInfo)}
     ></ResponseBox>);
     expect(linkboxSnap).toMatchSnapshot();
   });

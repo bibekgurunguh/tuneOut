@@ -1,15 +1,17 @@
 /* global chrome*/
 import * as React from 'react';
 import './GetIdButton.css';
-// import ResponseBox from './ResponseBox';
-// import identifyAudio from '../../../Arc-api/audio-request.ts'
+
+interface PropsType {
+  getId: Function,
+  runLoadingAnimation: Function
+}
 
 export function GetIdButton({
-  // listAllTabs,
   getId,
   runLoadingAnimation,
-}) {
-  function handleClick(event) {
+}: PropsType) {
+  function handleClick() {
     runLoadingAnimation();
     getId();
   }

@@ -2,13 +2,19 @@ import * as React from 'react';
 import ResponseItem from './ResponseItem';
 import './ResponseBox.css';
 import Lottie from 'react-lottie';
-// import animationData from '../animations/loading-animation.json'
 const animationData = require('../animations/loading-animation.json');
 import YtSearch from './external-links/YtSearch';
 import SpotifySearch from './external-links/SpotifySearch';
 import DiscogsSearch from './external-links/DiscogsSearch';
 
-export function ResponseBox({ songInfo, setSongInfo, animation }) {
+import { SongInfoObject } from '../../types/interfaces';
+
+interface PropsType {
+  stringifiedSongInfo: string,
+  animation: boolean
+}
+
+export function ResponseBox({ stringifiedSongInfo, animation }: PropsType) {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -26,11 +32,11 @@ export function ResponseBox({ songInfo, setSongInfo, animation }) {
     );
   }
 
-  if (songInfo) {
-    const songObj = JSON.parse(songInfo);
+  if (stringifiedSongInfo) {
+    const songObj: SongInfoObject = JSON.parse(stringifiedSongInfo);
     if (songObj.status.code === 1001) {
       //? on song identification failure
-      songInfo = [];
+      stringifiedSongInfo = '';
       return (
         <div className={'errorBox'}>
           <h3 className={'errorMessage'}>couldn't identify track</h3>
@@ -39,7 +45,7 @@ export function ResponseBox({ songInfo, setSongInfo, animation }) {
       );
     } else if (songObj.status.code === 2004) {
       //? on song fingerprint failure
-      songInfo = [];
+      stringifiedSongInfo = '';
       return (
         <div className={'errorBox'}>
           <h3 className={'errorMessage'}>couldn't detect audio</h3>
@@ -47,10 +53,6 @@ export function ResponseBox({ songInfo, setSongInfo, animation }) {
         </div>
       );
     }
-
-    // console.log('parser', songObj)
-    // console.log('typeofparsed', typeof songObj)
-    // console.log('songinfo.metadata', songObj.metadata)
 
     const id = songObj.metadata.music[0];
 
@@ -66,8 +68,8 @@ export function ResponseBox({ songInfo, setSongInfo, animation }) {
     const trackAlbum = 'Album: ';
     const trackLabel = 'Label: ';
 
-    let externalIdSpotify;
-    let externalIdYoutube;
+    let externalIdSpotify: string | undefined;
+    let externalIdYoutube: string | undefined;
 
     if (id.external_metadata.spotify) {
       externalIdSpotify = id.external_metadata.spotify.track.id;
@@ -107,8 +109,8 @@ export function ResponseBox({ songInfo, setSongInfo, animation }) {
   }
 
   //? On popup initialization
-  const firstMsg = 'navigate to an audible tab';
-  const secondMsg = 'click identify to start';
+  const firstMsg = 'Navigate to an audible tab';
+  const secondMsg = 'Click identify to start';
 
   return (
     <div className={'emptyResBox'}>

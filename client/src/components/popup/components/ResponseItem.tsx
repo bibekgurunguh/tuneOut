@@ -1,9 +1,12 @@
 import * as React from 'react';
 import './ResponseItem.css'
 
+interface PropsType {
+  item: string,
+  attribute: string,
+}
 
-
-export default function ResponseItem({ item, attribute }) {
+export default function ResponseItem({ item, attribute }: PropsType) {
 
   return (
     <div>
