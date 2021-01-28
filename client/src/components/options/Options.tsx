@@ -9,18 +9,19 @@ export default function Options() {
     });
   }
 
-  const getCurrentSearchTime = () => {
-    chrome.storage.local.get(['searchTime'], (result) => {
-      console.log('Value currently is ' + result.searchTime);
-      return result.searchTime;
-    });
-  };
-
   return (
-    <div>
-      <h1>Settings</h1>
-      <button onClick={() => setSearchTime(3000)}>3 Seconds</button>
-      <button onClick={() => setSearchTime(8000)}>8 Seconds</button>
+    <div className={'optionsContainer'}>
+      <div className={'container'}>
+        <h1>Settings</h1>
+        <div className={'settingContainer'}>
+          <div className={'settingLabel'}>Search Behaviour</div>
+          <div className={'buttonsContainer'}>
+            <button onClick={() => setSearchTime(3000)}>Fast</button>
+            <button onClick={() => setSearchTime(7000)}>Balanced</button>
+            <button onClick={() => setSearchTime(12000)}>Accurate</button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,35 @@
+.optionsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 300px;
+  border: 2px solid black;
+  padding: 30px;
+  padding-top: 0px;
+  border-radius: 5px;
+}
+
+.settingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settingLabel {
+  font-weight: bold;
+  padding: 12px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 302px;
+}
+
+button {
+  width: 75px;
+  padding: 4px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
