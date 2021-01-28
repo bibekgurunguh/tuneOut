@@ -114,6 +114,18 @@ Object {
               />
             </a>
           </div>
+          <div>
+            <a
+              href="https://www.google.com/search?q=Clint Eastwood+Gorillaz+Lyrics"
+              target="_blank"
+            >
+              <img
+                alt="Search Lyrics on Google"
+                class="GoogleLogo"
+                src="test-file-stub"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -223,6 +235,18 @@ Object {
             >
               <img
                 alt="Search on Discogs"
+                src="test-file-stub"
+              />
+            </a>
+          </div>
+          <div>
+            <a
+              href="https://www.google.com/search?q=Clint Eastwood+Gorillaz+Lyrics"
+              target="_blank"
+            >
+              <img
+                alt="Search Lyrics on Google"
+                class="GoogleLogo"
                 src="test-file-stub"
               />
             </a>
@@ -337,6 +361,18 @@ Object {
           >
             <img
               alt="Search on Discogs"
+              src="test-file-stub"
+            />
+          </a>
+        </div>
+        <div>
+          <a
+            href="https://www.google.com/search?q=Clint Eastwood+Gorillaz+Lyrics"
+            target="_blank"
+          >
+            <img
+              alt="Search Lyrics on Google"
+              class="GoogleLogo"
               src="test-file-stub"
             />
           </a>
@@ -512,6 +548,18 @@ Object {
               />
             </a>
           </div>
+          <div>
+            <a
+              href="https://www.google.com/search?q=Woods+&ME+Lyrics"
+              target="_blank"
+            >
+              <img
+                alt="Search Lyrics on Google"
+                class="GoogleLogo"
+                src="test-file-stub"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -621,6 +669,18 @@ Object {
             >
               <img
                 alt="Search on Discogs"
+                src="test-file-stub"
+              />
+            </a>
+          </div>
+          <div>
+            <a
+              href="https://www.google.com/search?q=Woods+&ME+Lyrics"
+              target="_blank"
+            >
+              <img
+                alt="Search Lyrics on Google"
+                class="GoogleLogo"
                 src="test-file-stub"
               />
             </a>
@@ -735,6 +795,18 @@ Object {
           >
             <img
               alt="Search on Discogs"
+              src="test-file-stub"
+            />
+          </a>
+        </div>
+        <div>
+          <a
+            href="https://www.google.com/search?q=Woods+&ME+Lyrics"
+            target="_blank"
+          >
+            <img
+              alt="Search Lyrics on Google"
+              class="GoogleLogo"
               src="test-file-stub"
             />
           </a>

@@ -7,14 +7,14 @@ import {
   duplicateAudioStream,
 } from '../utils/audioCaptureHelperFunctions';
 
-export const captureAudioFromCurrentTab = () => {
+export const captureAudioFromCurrentTab = (searchTime: number) => {
   return new Promise<string>((resolve) => {
     try {
       chrome.tabCapture.capture({ audio: true }, function (stream) {
         if (!stream) return;
         const audioCopy = duplicateAudioStream(stream);
         audioCopy.play();
-        const data = recordAudioStream(stream);
+        const data = recordAudioStream(stream, searchTime);
         resolve(data);
       });
     } catch (err) {}

@@ -10,10 +10,10 @@ import '@testing-library/jest-dom';
 import 'jest-canvas-mock';
 
 import { mockSongInfo, clintEastwoodSongInfo } from '../../__mocks__/mocks';
-
 import ResponseItem from '../components/popup/components/ResponseItem';
 import { ResponseBox } from '../components/popup/components/ResponseBox';
 import Popup from '../components/popup/Popup'
+const chrome = require('sinon-chrome');
 
 describe('<ResponseBox /> should render various elements of the song result correctly', () => {
   beforeEach(() => {
@@ -111,6 +111,7 @@ describe('<ResponseItem />', () => {
 
 describe('Identify button', () => {
   beforeEach(() => {
+    global.chrome = chrome;
     render(
       <Popup />,
     );

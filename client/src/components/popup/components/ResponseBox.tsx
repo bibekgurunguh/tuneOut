@@ -6,6 +6,7 @@ const animationData = require('../animations/loading-animation.json');
 import YtSearch from './external-links/YtSearch';
 import SpotifySearch from './external-links/SpotifySearch';
 import DiscogsSearch from './external-links/DiscogsSearch';
+import GoogleSearch from './external-links/GoogleSearch';
 
 import { SongInfoObject } from '../../types/interfaces';
 
@@ -103,6 +104,7 @@ export function ResponseBox({ stringifiedSongInfo, animation }: PropsType) {
             ></SpotifySearch>
           </div>
           <DiscogsSearch artist={artist} album={album}></DiscogsSearch>
+          <GoogleSearch artist={artist} title={title}></GoogleSearch>
         </div>
       </div>
     );

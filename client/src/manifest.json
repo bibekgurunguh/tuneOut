@@ -13,6 +13,7 @@
     "default_popup": "./idx-popup.html"
   },
   "permissions": [
+    "storage",
     "tabs",
     "<all_urls>",
     "activeTab",

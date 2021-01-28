@@ -26,7 +26,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js'],
   },
   module: {
@@ -35,15 +34,6 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         use: { loader: 'awesome-typescript-loader' },
       },
-      // {
-      //   enforce: 'pre',
-      //   test: /\.js$/,
-      //   loader: 'source-map-loader',
-      // },
-      // {
-      //   test: /\.tsx$/,
-      //   use: 'raw-loader',
-      // },
       {
         test: /\.js$/,
         use: [
@@ -65,27 +55,10 @@ module.exports = {
         test: /\.html$/,
         use: ['html-loader'],
       },
-      // {
-      //   test: /\.css$/,
-      //   use: [
-      //     'style-loader',
-      //     {
-      //       loader: 'css-loader',
-      //       options: {
-      //         importLoaders: 1,
-      //         modules: true,
-      //       },
-      //     },
-      //   ],
-      // },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
-      // {
-      //   test: /\.svg$/,
-      //   use: ['@svgr/webpack'],
-      // },
       {
         test: /\.svg$/,
         use: [
@@ -121,19 +94,9 @@ module.exports = {
       template: 'client/src/index-html/idx-options.html',
       chunks: ['options'],
     }),
-    // !comment out when shipping to production
-    // new HtmlWebpackPlugin({
-    //     filename: 'idx-foreground.html',
-    //     template: 'client/src/index-html/idx-foreground.html',
-    //     chunks: ['foreground']
-    // }),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'client/src/manifest.json', to: '[name].[ext]' },
-        // {
-        //   from: 'client/src/index-js/index-background.ts',
-        //   to: '[name].[ext]',
-        // },
         { from: 'client/src/inject_script.js', to: '[name].[ext]' },
       ],
     }),

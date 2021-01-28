@@ -6,7 +6,25 @@ import {
 let recorder: MediaRecorder;
 let streamObject: MediaStream;
 
-export const recordAudioStream = (stream: MediaStream | undefined) => {
+export const getSearchTime = () => {
+  let fetchedSearchTime: number = 6000;
+  chrome.storage.local.get(['searchTime'], (result) => {
+    if (chrome.runtime.lastError) {
+      fetchedSearchTime = 6000;
+    } else {
+      console.log('Value currently is ' + result.searchTime);
+      fetchedSearchTime = result.searchTime;
+    }
+  });
+  return fetchedSearchTime;
+}
+
+// chrome.storage.local.get(['searchTime'], (result) => {
+//     console.log('Value currently is ' + result.searchTime);
+//     searchTime = result.searchTime;
+// });
+
+export const recordAudioStream = (stream: MediaStream | undefined, searchTime: number) => {
   if (!stream) throw new Error('Stream is undefined.');
   return new Promise<string>((resolve) => {
     const options: { mimeType: string } = {
@@ -18,7 +36,7 @@ export const recordAudioStream = (stream: MediaStream | undefined) => {
     setTimeout(() => {
       recorder.stop();
       streamObject.getAudioTracks()[0].stop();
-    }, 8000);
+    }, searchTime);
     recorder.ondataavailable = function (e) {
       let blob = new Blob([e.data], { type: 'audio/mp3' });
       const data = triggerApiCall(blob);
