@@ -8,9 +8,9 @@ tuneOut will soon be available to download on the Chrome store.
 
 ## Screenshots
 
-![Example Image 3](https://raw.githubusercontent.com/Hough-Lab/tuneOut/main/readmeFiles/tuneOutExample3.png)
-
 ![Example Image 1](https://raw.githubusercontent.com/Hough-Lab/tuneOut/main/readmeFiles/tuneOutExample1.png)
+
+![Example Image 3](https://raw.githubusercontent.com/Hough-Lab/tuneOut/main/readmeFiles/tuneOutExample3.png)
 
 ## Tech Stack
 
